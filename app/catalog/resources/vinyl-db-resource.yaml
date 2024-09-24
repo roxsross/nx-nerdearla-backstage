@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: vinyl-db
+  description: Stores vinyl record details
+spec:
+  type: database
+  owner: roxs
+  system: vinyl-engagement-portal

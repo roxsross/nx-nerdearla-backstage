@@ -1,0 +1,9 @@
+site_name: ${{values.name}}
+site_description: ${{values.description}}
+
+nav:
+  - Introduction: index.md
+  - Other: other.md
+
+plugins:
+  - techdocs-core

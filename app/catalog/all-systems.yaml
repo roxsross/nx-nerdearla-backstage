@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: system-resources
+  description: A collection of all Backstage systems
+spec:
+  type: file
+  targets:
+    - ./systems/vinyl-shop-system.yaml

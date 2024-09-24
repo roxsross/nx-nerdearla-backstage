@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: template-resources
+  description: A collection of all Backstage templates
+spec:
+  type: file
+  targets:
+    - ./templates/template-terraform-s3.yaml

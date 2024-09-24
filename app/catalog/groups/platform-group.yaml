@@ -1,0 +1,66 @@
+---
+# Non-demo file would separate the group and user into different files
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: roxsross
+spec:
+  profile:
+    displayName: Rossana Suarez
+    email: roxsross@example.com
+    picture: https://raw.githubusercontent.com/roxsross/roxsross/main/images/Copia%20de%20ROXSROSS%20FINAL%20(1).png
+  memberOf: [naranjax, roxs]
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: platform
+  description: The platform team
+spec:
+  type: business-unit
+  profile:
+    displayName: Platform
+    email: platform@example.com
+  children: [naranjax]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: naranjax
+  description: The naranjax platform team
+spec:
+  type: team
+  profile:
+    displayName: Naranjax Platform Group
+    email: platform.naranjax@example.com
+  parent: platform
+  members: [roxsross]
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: operations
+  description: The Operations group team
+spec:
+  type: business-unit
+  profile:
+    displayName: Demo Operations Group
+    email: operations@example.com
+  children: [roxs]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: roxs
+  description: The roxs Operations group team
+spec:
+  type: team
+  profile:
+    displayName: Demo roxs Operation Team
+    email: operations.roxs@example.com
+  parent: operations
+  members: [roxsross]
+  children: []

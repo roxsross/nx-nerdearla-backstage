@@ -1,0 +1,43 @@
+services:
+
+  # Access postgres DB with adminer on http://localhost:8080
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  backstage:
+    build:
+      context: ../../app
+      dockerfile: packages/backend/Dockerfile.dev
+    restart: always
+    ports:
+      - 7007:7007
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: backstage
+      NODE_OPTIONS: --no-node-snapshot
+    depends_on:
+      - postgres
+    volumes:
+      - ./../../app/catalog:/app/catalog
+      - ./../../app/examples:/app/examples
+
+  postgres:
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: backstage
+    volumes:
+        - pg-data:/var/lib/postgresql/data
+volumes:
+  pg-data:

@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: group-resources
+  description: A collection of all Backstage groups
+spec:
+  type: file
+  targets:
+    - ./groups/platform-group.yaml

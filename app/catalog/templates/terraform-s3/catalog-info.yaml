@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: ${{ values.name | dump }}
+  description: Terraform S3 Bucket
+  tags:
+    - terraform
+    - infrastructure
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: iac
+  lifecycle: experimental
+  owner: ${{ values.team | dump }}
